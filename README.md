@@ -68,7 +68,7 @@ This will allow express-session to run on all endpoints with our chosen secret b
 
 ## Step 2: Controllers, endpoints, and data
 
-To keep our app's structure clean, let's create a new folder named `controllers` and add two files: `profileCtrl.js` and `userCtrl.js`. Require these
+To keep our app's structure clean, let's create a new folder named `controllers` and add two files: `profileListCtrl.js` and `userCtrl.js`. Require these
 controllers in your `server.js`, don't forget that you have to provide a file path when requiring your own files!
 
 We'll need some data inside our controllers to check against and send to our users:
@@ -100,7 +100,7 @@ var users = [
 ```
 
 ```javascript
-// profileCtrl.js
+// profileListCtrl.js
 var profiles = [
   {
     name: 'Preston McNeil',
@@ -140,7 +140,7 @@ Things to note:
 * We have set a property on the `req.session` equal to our user. This lets us continue to track which user is currently active.
 
 ___
-On to `profileCtrl.js`. Again, create your module.exports object.
+On to `profileListCtrl.js`. Again, create your module.exports object.
 
 Let's create a method called `getFriendsProfiles`. Your current user has a friends array which contains a list of names. For each friend in this array, you will need to find the corresponding profile object in the profiles array. Push these matching profile objects to a new array.  
 
@@ -183,7 +183,7 @@ your `login` endpoint, sending the `user` object we received from our controller
 Next, we need to write the `getFriends` method in `friendService.js` so that it sends a `GET`
 request to our `/api/profiles` endpoint.
 
-Lastly, in `profileCtrl.js` you will need to assign the correct values (coming from the `getFriends` method in your service) to `$scope.currentUser` and `$scope.friends`.
+Lastly, in `profileListCtrl.js` you will need to assign the correct values (coming from the `getFriends` method in your service) to `$scope.currentUser` and `$scope.friends`.
 
 --------
 
